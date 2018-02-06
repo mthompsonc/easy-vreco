@@ -28,6 +28,15 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
+
+        // autocompletado
+      function initialize() {
+        var input = document.getElementById('pac-input');
+        new google.maps.places.Autocomplete(input);
+      }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
       }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -36,3 +45,6 @@
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
       }
+  
+
+
