@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geolocalización</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 colbtn">
         <button class="btn btn-warning">Encuéntrame</button>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <h4>Origen</h4>
-        <input type="text" placeholder="Introduce una ubicación" >
+        <input type="text" placeholder="Introduce una ubicación">
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <h4>Destino</h4>
@@ -26,7 +27,9 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div id="map"></div>
+      </div>
     </div>
   </div>
   <script
@@ -35,5 +38,8 @@
   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="assets/js/app.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgLmFihHNPEaxSiqWqVbNw-9S9-GqKowA&callback=initMap">
+    </script>
 </body>
 </html>

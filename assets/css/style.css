@@ -1,3 +1,12 @@
-.colbtn{
-  vertical-align: middle!important;
+ html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+#map {
+  margin-top: 3em;
+  height: 30em;
+  width: 80em;
+  text-align: center!important;
 }
