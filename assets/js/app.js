@@ -29,13 +29,19 @@
           handleLocationError(false, infoWindow, map.getCenter());
         }
 
-        // autocompletado
-      function initialize() {
-        var input = document.getElementById('pac-input');
-        new google.maps.places.Autocomplete(input);
-      }
-
-google.maps.event.addDomListener(window, 'load', initialize);
+        // autocompletado input origen
+        function initialize() {
+          var input = document.getElementById('pac-input');
+          new google.maps.places.Autocomplete(input);
+        }
+        
+        // autocompletado input destino
+        function initialize2() {
+          var input = document.getElementById('pac-input-2');
+          new google.maps.places.Autocomplete(input);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addDomListener(window, 'load', initialize2);
 
       }
 
