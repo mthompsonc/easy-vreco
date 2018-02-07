@@ -11,7 +11,7 @@ function findMe(){
   var latitude= posicion.coords.latitude;
   var longitude= posicion.coords.longitude;
 
-  var imgUrl= "https://maps.googleapis.com/maps/api/staticmap?size=1000x400&markers=icon:https://image.ibb.co/bZTUwH/bike.png%7C"+ latitude +","+ longitude +"&key=AIzaSyAgLmFihHNPEaxSiqWqVbNw-9S9-GqKowA"
+  var imgUrl= "https://maps.googleapis.com/maps/api/staticmap?size=1000x400&markers=icon:https://image.ibb.co/k8ha3x/mini_bike.png%7C"+ latitude +","+ longitude +"&key=AIzaSyAgLmFihHNPEaxSiqWqVbNw-9S9-GqKowA"
 
 
   output.innerHTML= "<img class=mapg src='"+ imgUrl +"'>"
