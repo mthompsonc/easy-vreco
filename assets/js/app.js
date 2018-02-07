@@ -1,4 +1,75 @@
-function findMe(){
+function initMap() {
+  var laboratoriaChile = {
+    lat: -33.4190406,
+    lng: -70.6438986
+  };
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 18,
+    center: laboratoriaChile
+  });
+  var markadorLaboratoria = new google.maps.Marker({
+    map: map
+  });
+
+
+  function buscar() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(funcionExito, funcionError);
+    }
+  }
+  var latitude, longitude;
+  var funcionExito = function(posicion) {
+    latitud = posicion.coords.latitude;
+    longitud = posicion.coords.longitude;
+    var iconBase = 'https://image.ibb.co/k8ha3x/mini_bike.png';
+    var miUbicación= new google.maps.Marker({
+      position: {lat: latitud, lng: longitud},
+      map: map,
+      icon: iconBase
+    });
+    map.setZoom(18);
+    map.setCenter({
+      lat: latitud,
+      lng: longitud
+    });
+  }
+
+  var funcionError = function(error) {
+    alert("Tenemos un problema con encontrar tu ubicación");
+  }
+  document.getElementById('findme').addEventListener('click',buscar);
+
+// Agregando funcionalidad de inputs
+var inputOrigen= document.getElementById("origen");
+var inputDestino= document.getElementById("destino");
+
+new google.maps.places.Autocomplete(inputOrigen);
+new google.maps.places.Autocomplete(inputDestino);
+
+// Trazar Ruta
+
+var directionsService= new google.maps.DirectionsService;
+var directionsDisplay= new google.maps.DirectionsRenderer;
+
+var calculateAndDisplayRoute = function(directionsService, directionsDisplay){
+  directionsService.route({
+    origin: inputOrigen.value,
+    destination: inputDestino.value,
+    travelMode: 'BICYCLING'
+  }, function(response, status){
+    if(status === 'OK'){
+      directionsDisplay.setDirections(response);
+    }else{
+      window.alert('No encontramos una ruta');
+    }
+  })
+  document.getElementById('trazar-ruta').addEventListener('click',calculateAndDisplayRoute);
+}
+}
+
+
+
+/*function findMe(){
   var output= document.getElementById('map');
   if(navigator.geolocation){
     console.log('Si se puede!');
@@ -23,12 +94,12 @@ function findMe(){
   }
   navigator.geolocation.getCurrentPosition(localizacion,error);
 }
-
+*/
 
 // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
+// prompted by your browser. If you see the error "The Geolocation service
+// failed.", it means you probably did not give permission for the browser to
+// locate you.
 /*
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -80,4 +151,3 @@ function findMe(){
       }
   
 */
-
