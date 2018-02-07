@@ -11,8 +11,8 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 colbtn">
-        <button class="btn btn-warning">Encuéntrame</button>
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <button class="btn btn-warning btns" onclick="findMe()" id="findme">Encuéntrame</button>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <h4>Origen</h4>
@@ -23,7 +23,7 @@
         <input id="pac-input-2" type="text" placeholder="Introduce una ubicación">
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-        <button class="btn btn-warning">Ruta</button>
+        <button class="btn btn-warning btns">Ruta</button>
       </div>
     </div>
     <div class="row">
@@ -38,8 +38,9 @@
   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="assets/js/app.js"></script>
-  <script async defer
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgLmFihHNPEaxSiqWqVbNw-9S9-GqKowA"></script>
+  <!-- <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgLmFihHNPEaxSiqWqVbNw-9S9-GqKowA&callback&libraries=places&callback=initMap">
-    </script>
+    </script>  -->
 </body>
 </html>

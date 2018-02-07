@@ -1,8 +1,35 @@
+function findMe(){
+  var output= document.getElementById('map');
+  if(navigator.geolocation){
+    console.log('Si se puede!');
+  } else {
+    console.log('no se puede :(')
+  }
+
+  function localizacion(posicion){
+  
+  var latitude= posicion.coords.latitude;
+  var longitude= posicion.coords.longitude;
+
+  var imgUrl= "https://maps.googleapis.com/maps/api/staticmap?size=1000x400&markers=icon:https://image.ibb.co/bZTUwH/bike.png%7C"+ latitude +","+ longitude +"&key=AIzaSyAgLmFihHNPEaxSiqWqVbNw-9S9-GqKowA"
+
+
+  output.innerHTML= "<img class=mapg src='"+ imgUrl +"'>"
+  console.log(latitude);
+  console.log(longitude);
+  }
+  function error(){
+    console.log('no se puede encontrar su posición')
+  }
+  navigator.geolocation.getCurrentPosition(localizacion,error);
+}
+
+
 // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
-
+/*
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
@@ -52,5 +79,5 @@
                               'Error: Your browser doesn\'t support geolocation.');
       }
   
-
+*/
 
