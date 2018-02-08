@@ -3,6 +3,7 @@ function initMap() {
     lat: -33.4190406,
     lng: -70.6438986
   };
+
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 18,
     center: laboratoriaChile
@@ -11,6 +12,13 @@ function initMap() {
     map: map
   });
 
+  function autocompletado() {
+    var input = document.getElementById('pac-input');
+    var input2 = document.getElementById('pac-input-2');
+    new google.maps.places.Autocomplete(input);
+    new google.maps.places.Autocomplete(input2);
+  }
+  google.maps.event.addDomListener(window, 'load', autocompletado);
 
   function buscar() {
     if (navigator.geolocation) {
@@ -39,32 +47,24 @@ function initMap() {
   }
   document.getElementById('findme').addEventListener('click',buscar);
 
-// Agregando funcionalidad de inputs
-var inputOrigen= document.getElementById("origen");
-var inputDestino= document.getElementById("destino");
+  // Trazar Ruta
+  var directionsService= new google.maps.DirectionsService;
+  var directionsDisplay= new google.maps.DirectionsRenderer;
 
-new google.maps.places.Autocomplete(inputOrigen);
-new google.maps.places.Autocomplete(inputDestino);
-
-// Trazar Ruta
-
-var directionsService= new google.maps.DirectionsService;
-var directionsDisplay= new google.maps.DirectionsRenderer;
-
-var calculateAndDisplayRoute = function(directionsService, directionsDisplay){
-  directionsService.route({
-    origin: inputOrigen.value,
-    destination: inputDestino.value,
-    travelMode: 'BICYCLING'
-  }, function(response, status){
-    if(status === 'OK'){
-      directionsDisplay.setDirections(response);
-    }else{
-      window.alert('No encontramos una ruta');
-    }
-  })
-  document.getElementById('trazar-ruta').addEventListener('click',calculateAndDisplayRoute);
-}
+  var calculateAndDisplayRoute = function calculateAndDisplayRoute(directionsService, directionsDisplay){
+    directionsService.route({
+      origin: document.getElementById("pac-input").value,
+      destination: document.getElementById("pac-input-2").value,
+      travelMode: 'BICYCLING'
+    }, function(response, status){
+      if(status === 'OK'){
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('No encontramos una ruta');
+      }      
+    });   
+  }
+  document.getElementById('trazar-ruta').addEventListener('click', calculateAndDisplayRoute);
 }
 
 
