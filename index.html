@@ -14,23 +14,22 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-        <button class="btn btn-warning btns" id="findme">Encuéntrame</button>
+        <button class="btn btn-warning btns center-block" id="findme">Encuéntrame</button>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <h4>Origen</h4>
-        <input id="pac-input" type="text" placeholder="Introduce una ubicación">
+        <input id="origin" type="text" placeholder="Introduce una ubicación" class="center-block">
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <h4>Destino</h4>
-        <input id="pac-input-2" type="text" placeholder="Introduce una ubicación">
+        <input id="destination" type="text" placeholder="Introduce una ubicación" class="center-block">
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-        <button class="btn btn-warning btns" id="trazar-ruta">Ruta</button>
+        <button class="btn btn-warning btns center-block" id="route">Ruta</button>
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div id="map"></div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 img-responsive" id="map">
       </div>
     </div>
   </div>
@@ -41,7 +40,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="assets/js/app.js"></script>
   <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgLmFihHNPEaxSiqWqVbNw-9S9-GqKowA&callback=initMap&libraries=places">
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBh5ICIzzRsDNO6_S0UYEuT7KQmIRV44QE&callback=initMap&libraries=places">
     </script>
 </body>
 </html>

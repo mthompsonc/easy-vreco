@@ -6,8 +6,16 @@
 
 #map {
   margin-top: 3em;
-  height: 30em;
-  width: 100vh;
+  width: 100%;
+  min-height: 23em;
+}
+
+h4{
+  padding-left: 0.5em ;
+}
+
+input{
+  width: 90%;
 }
 
 .controls {

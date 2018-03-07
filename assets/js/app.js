@@ -12,20 +12,15 @@ function initMap() {
     map: map
   });
 
-  function autocompletado() {
-    var input = document.getElementById('pac-input');
-    var input2 = document.getElementById('pac-input-2');
-    new google.maps.places.Autocomplete(input);
-    new google.maps.places.Autocomplete(input2);
-  }
-  google.maps.event.addDomListener(window, 'load', autocompletado);
 
-  function buscar() {
+  // * Buscando ubicación actual.-
+
+  function findMe() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(funcionExito, funcionError);
     }
   }
-  var latitude, longitude;
+  var latitud, longitud;
   var funcionExito = function(posicion) {
     latitud = posicion.coords.latitude;
     longitud = posicion.coords.longitude;
@@ -45,27 +40,75 @@ function initMap() {
   var funcionError = function(error) {
     alert("Tenemos un problema con encontrar tu ubicación");
   }
-  document.getElementById('findme').addEventListener('click',buscar);
 
-  // Trazar Ruta
-  var directionsService= new google.maps.DirectionsService;
-  var directionsDisplay= new google.maps.DirectionsRenderer;
+  // * Función de autocompletado de inputs
+  
+  function autocomplete() {
+    var origin = document.getElementById('pac-input');
+    var destination = document.getElementById('pac-input-2');
+    new google.maps.places.Autocomplete(origin);
+    new google.maps.places.Autocomplete(destination);
+  }
+  google.maps.event.addDomListener(window, 'load', autocomplete);
 
-  var calculateAndDisplayRoute = function calculateAndDisplayRoute(directionsService, directionsDisplay){
+  document.getElementById('findme').addEventListener('click',findMe);
+
+  // * Trazar Ruta
+    var latitud, longitud;
+
+    var success = function(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+
+      var myLocation = new google.maps.Marker({
+       position: {lat: latitude, lng: longitude},
+       animation: google.maps.Animation.DROP,
+       draggable: true,
+       title: 'drag me!',
+       map: map,
+       icon: image
+      });
+      map.setZoom(17);
+      map.setCenter({lat: latitude, lng: longitude});
+    }
+
+    var error = function(err) {
+      console.log(err);
+    }
+
+    var origin = document.getElementById('origin');
+    var destination = document.getElementById('destination');
+    var autocomplete = new google.maps.places.Autocomplete(origin);
+    autocomplete.bindTo('bounds', map);
+
+    var autocompleteDest = new google.maps.places.Autocomplete(destination);
+    autocompleteDest.bindTo('bounds', map);
+
+     var directionsService = new google.maps.DirectionsService();
+       var directionsDisplay = new google.maps.DirectionsRenderer();
+
+       directionsDisplay.setMap(map);
+
+       var onChangeHandler = function() {
+         calculateAndDisplayRoute(directionsDisplay, directionsService);
+       }
+
+       document.getElementById('route').addEventListener('click', onChangeHandler);
+
+      function calculateAndDisplayRoute(directionsDisplay, directionsService){
     directionsService.route({
-      origin: document.getElementById("pac-input").value,
-      destination: document.getElementById("pac-input-2").value,
-      travelMode: 'BICYCLING'
+      origin: document.getElementById("origin").value,
+      destination: document.getElementById("destination").value,
+      travelMode: 'WALKING'
     }, function(response, status){
       if(status === 'OK'){
         directionsDisplay.setDirections(response);
       } else {
         window.alert('No encontramos una ruta');
-      }      
-    });   
+      }
+    });
   }
-  document.getElementById('trazar-ruta').addEventListener('click', calculateAndDisplayRoute);
-}
+};
 
 
 
