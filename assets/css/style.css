@@ -1,21 +1,26 @@
  html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+  height: 80%!important;
+  margin: 0;
+  padding: 0;
+  background-color: #ECFDFF;
+  overflow-x: none!important;
+  }
+
+h3{
+  color:#00BBAE;
+}
 
 #map {
-  margin-top: 3em;
+  margin-top: 2em;
   width: 100%;
-  min-height: 23em;
+  min-height: 20em;
 }
 
-h4{
-  padding-left: 0.5em ;
-}
 
 input{
-  width: 90%;
+  width: 90%!important;
+  vertical-align: middle;
+  padding-left: 1em!important;
 }
 
 .controls {
@@ -27,8 +32,4 @@ input{
   height: 32px;
   outline: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.btns{
-  margin-top: 2.5em;
 }

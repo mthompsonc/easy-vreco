@@ -5,7 +5,7 @@ function initMap() {
   };
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 18,
+    zoom: 16,
     center: laboratoriaChile
   });
   var markadorLaboratoria = new google.maps.Marker({
@@ -44,8 +44,8 @@ function initMap() {
   // * Función de autocompletado de inputs
   
   function autocomplete() {
-    var origin = document.getElementById('pac-input');
-    var destination = document.getElementById('pac-input-2');
+    var origin = document.getElementById('origin');
+    var destination = document.getElementById('destination');
     new google.maps.places.Autocomplete(origin);
     new google.maps.places.Autocomplete(destination);
   }
